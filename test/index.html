@@ -1,173 +1,41 @@
+<!DOCTYPE html>
 <html ng-app="myApp">
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge;" />	
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta charset="utf-8">
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	
-		<!-- JQUERY -->
-		<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script-->
-		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>IDE</title>
 
-		<!-- ANGULAR -->
-<!--		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.min.js"></script>
--->		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-sanitize.min.js"></script>
-		<script data-require="angular-resource@1.2.14" data-semver="1.2.14" src="http://code.angularjs.org/1.2.28/angular-resource.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+	<link rel="stylesheet" href="../css/splitbox.css">
 
-		<!-- BOOTSTRAP -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-sanitize.min.js"></script>
+	<script src="bundle.js"></script>
 
-		<!-- FONTAWESOME -->
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script type="text/javascript">
+		angular.module('myApp', ['ui.splitbox']);
+	</script>
+</head>
 
-		<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-		<script src="bundle.js"></script>		
-		<title>IDE</title>
-		<style type="text/css">
-			.splitbox {
-				left:0px;
-				right:0px;
-				top:0px;
-				bottom: 0px;
-				position: absolute;
-			}
-			.splitter {
-				z-index:1000;
-				background-color: red;
-				box-sizing: border-box;
-				position: absolute;
-			}
-			.splitter.horizontal {
-				cursor: ns-resize;
-				height:1px;
-				width: 100%;
-				top:50%;
-			}
+<body>
 
-			.splitter.vertical {
-				cursor: ew-resize;
-				width:1px;
-				height: 100%;
-				left:50%;
-			}
-			.splitboxbox {
-				overflow: hidden;
-				position: absolute;
-			}
-			.window {
-				left:0px;
-				right:0px;
-				top:0px;
-				bottom: 0px;
-				position: absolute;
-				background-color: pink;
-			}
-			.splitdroparea {
-				z-index:10000;
-				background: rgba(0, 0, 0, 0.05);
-				position: absolute;
-				pointer-events:none;
-				box-sizing border-box;
-				cursor: default;
-			}
-			.window-content {
-				position: absolute;
-				top:17px;
-				left:0px;
-				right:0px;
-				bottom:0px;
-				overflow: auto;
-			}
+<hbox>
+  <div style="background:#3498db">
+    Top content
+  </div>
+  <vbox>
+    <div style="background:#e67e22">
+      bottom left content
+    </div>
+    <hbox>
+      <div style="background:#f1c40f">bottom right - top section</div>
+      <div style="background:#e74c3c">bottom right - bottom section</div>
+    </hbox>
+  </vbox>
+</hbox>
 
-			.window-header {
-				height:16px;
-				background-color: white;
-				border: 1px solid green;
-				position: absolute;
-				left:0px;
-				right:0px;
-				top:0px;
-				overflow-x: hidden;
-				overflow-y: hidden;
-				flex-direction: row;
-			}
-			.window-header div>a {
-				position: relative;
-				float:left;
-				min-width: 97px;
-				margin: 0 20px;
-				padding: 0 10px;
-				font-size: 11px;
-				cursor:pointer;
-			}
-			.window-header div.active>a{
- 				background-color: #DFDFDF;
-			}			
-			.window-header div>a:hover {
-				transition: background-color 0.3s ease;
-				background-color: #DFDFDF;
-			}
+</body>
 
-*[draggable=true] {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  /* Required to make elements draggable in old WebKit */
-  -khtml-user-drag: element;
-  -webkit-user-drag: element;
-}
-
-
-
-
-/*
- *  STYLE 3
- */
-
-::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
-}
-
-::-webkit-scrollbar
-{
-	width: 6px;
-	background-color: #F5F5F5;
-}
-
-::-webkit-scrollbar-thumb
-{
-	background-color: #000000;
-}
-
-		</style>
-	</head>
-	<body>
-		<div class="container-flud">
-			<hbox>
-				<window><pane caption="Test A"><div>A</div></pane></window>
-				<vbox>
-					<window><pane caption="Test B"><div>B</div></pane></window>
-					<hbox one-min-size="100">
-						<window>
-							<pane caption="Test 1"><div>Pane 1</div></pane>
-							<pane caption="Test 2"><div>Pane 2</div></pane>
-							<pane caption="Test 3"><div>Pane 3</div></pane>
-						</window>
-						<window><pane caption="Test C"><div>C</div></pane></window>
-					</hbox>
-				</vbox>
-			</hbox>	
-		</div>
-		<script type="text/javascript">
-			angular.module('myApp', ['ui.box']);
-		</script>
-	</body>
 </html>

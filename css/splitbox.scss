@@ -1,0 +1,49 @@
+$splitter-color: #dedede;
+$splitter-width: 1px;
+$splitter-mouse-trap-width: 9px;
+
+.splitbox {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .splitboxbox {
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .splitter {
+    background-color: $splitter-color;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 999;
+
+    &.horizontal {
+      cursor: ns-resize;
+      height: $splitter-width;
+      top: 50%;
+      width: 100%;
+
+      .splitter-mouse-trap {
+        height: $splitter-mouse-trap-width;
+        margin-top: ($splitter-mouse-trap-width - $splitter-width)/-2;
+        width: 100%;
+      }
+    }
+
+    &.vertical {
+      cursor: ew-resize;
+      height: 100%;
+      left: 50%;
+      width: $splitter-width;
+
+      .splitter-mouse-trap {
+        height: 100%;
+        margin-left: ($splitter-mouse-trap-width - $splitter-width)/-2;
+        width: $splitter-mouse-trap-width;
+      }
+    }
+  }
+}
